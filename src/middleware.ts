@@ -7,7 +7,7 @@ const authRoutes: string[] = ["/login", "/register", "/forgot-password"];
 
 const protectedRoutes: string[] = ["/reset-password", "/settings", "/prices", "/orders", "/new-order"];
 
-const adminProtectedRoutes: string[] = [...protectedRoutes, "/customers", "/order-requests", "/orders-history"];
+const adminProtectedRoutes: string[] = ["/customers", "/order-requests", "/orders-history"];
 
 export const middleware: NextMiddleware = async (req) => {
   const res = NextResponse.next();
@@ -25,7 +25,7 @@ export const middleware: NextMiddleware = async (req) => {
 
     return res;
   } else {
-    if (protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
+    if (adminProtectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route)) || protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
 
