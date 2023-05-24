@@ -72,7 +72,7 @@ const RegisterPage = () => {
               email,
               password,
               options: {
-                emailRedirectTo: "http://localhost:3000/login",
+                emailRedirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/login`,
                 data: {
                   name: `${firstName} ${lastName}`,
                 },
