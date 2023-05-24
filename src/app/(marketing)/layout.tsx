@@ -16,7 +16,9 @@ const MarketingLayout = ({ children }: { children: ReactNode }) => {
       <header className="fixed top-0 z-40 flex h-[112px] w-full items-center bg-white/80 pr-[var(--removed-body-scroll-bar-size)] backdrop-blur">
         <div className="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-4 py-8">
           <div className="min-w-[20rem]">
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
           </div>
 
           <nav className="flex items-center space-x-8">
@@ -102,7 +104,9 @@ const MarketingLayout = ({ children }: { children: ReactNode }) => {
       <footer className="mt-16 flex w-full items-center bg-neutral-950 text-neutral-50">
         <div className="mx-auto flex w-full max-w-screen-2xl flex-col space-y-8 px-4 py-12">
           <div className="flex items-center space-x-8">
-            <Logo dark />
+            <Link href="/">
+              <Logo dark />
+            </Link>
             {[
               {
                 label: "Послуги",
