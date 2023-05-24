@@ -7,7 +7,7 @@ const authRoutes: string[] = ["/login", "/register", "/forgot-password"];
 
 const protectedRoutes: string[] = ["/reset-password", "/settings", "/prices", "/orders", "/new-order"];
 
-const adminProtectedRoutes: string[] = ["/customers", "/order-requests", "/orders-history"];
+const adminProtectedRoutes: string[] = [...protectedRoutes, "/customers", "/order-requests", "/orders-history"];
 
 export const middleware: NextMiddleware = async (req) => {
   const res = NextResponse.next();
