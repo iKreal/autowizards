@@ -20,7 +20,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
     <html
       lang="en"
       className={cn(
-        "scroll-smooth border-neutral-200 bg-white font-sans text-neutral-900 antialiased",
+        "scroll-smooth border-neutral-200 bg-white font-sans text-neutral-900 antialiased overflow-x-hidden",
         fontSans.variable
       )}
     >
