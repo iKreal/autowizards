@@ -3,7 +3,7 @@
 import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 import type { Database } from "~types/supabase";
 
@@ -41,16 +41,15 @@ export const SupabaseProvider = ({
     };
   }, [router, supabase, session?.access_token]);
 
-  return (
-    <SupabaseContext.Provider
-      value={{
-        supabase,
-        session,
-      }}
-    >
-      {children}
-    </SupabaseContext.Provider>
+  const context = useMemo(
+    () => ({
+      supabase,
+      session,
+    }),
+    [supabase, session]
   );
+
+  return <SupabaseContext.Provider value={context}>{children}</SupabaseContext.Provider>;
 };
 
 export const useSupabase = () => {

@@ -25,7 +25,10 @@ export const middleware: NextMiddleware = async (req) => {
 
     return res;
   } else {
-    if (adminProtectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route)) || protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))) {
+    if (
+      adminProtectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route)) ||
+      protectedRoutes.some((route) => req.nextUrl.pathname.startsWith(route))
+    ) {
       return NextResponse.redirect(new URL("/login", req.url));
     }
 

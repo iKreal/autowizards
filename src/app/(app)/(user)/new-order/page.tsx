@@ -182,9 +182,11 @@ const NewOrderPage = () => {
                             : setSelectedServices((selectedServices) => {
                                 const cloned = structuredClone(selectedServices);
 
+                                // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
                                 delete cloned[service.label][item.name];
 
                                 if (Object.keys(cloned[service.label]).length === 0) {
+                                  // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
                                   delete cloned[service.label];
                                 }
 

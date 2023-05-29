@@ -65,37 +65,10 @@ export const deleteOrderAction = async (id: string) => {
   return supabase.from("orders").delete().eq("id", id);
 };
 
-export const acceptOrderAction = async (id: string) => {
+export const updateOrderAction = async (id: string, data: Database["public"]["Tables"]["orders"]["Update"]) => {
   const supabase = createServerActionSupabase();
 
-  return supabase
-    .from("orders")
-    .update({
-      status: "Підтверджено",
-    })
-    .eq("id", id);
-};
-
-export const declineOrderAction = async (id: string) => {
-  const supabase = createServerActionSupabase();
-
-  return supabase
-    .from("orders")
-    .update({
-      status: "Скасовано",
-    })
-    .eq("id", id);
-};
-
-export const completeOrderAction = async (id: string) => {
-  const supabase = createServerActionSupabase();
-
-  return supabase
-    .from("orders")
-    .update({
-      status: "Виконано",
-    })
-    .eq("id", id);
+  return supabase.from("orders").update(data).eq("id", id);
 };
 
 export const getAllCustomers = async () => {
